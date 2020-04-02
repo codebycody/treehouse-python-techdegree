@@ -34,7 +34,7 @@ def main():
 					print('Something went very wrong')
 		
 		except Exception as e:
-			print('Please input an number between 1 and 10.')
+			print('Please input a number between 1 and 10.')
 
 
 if __name__ == '__main__':
