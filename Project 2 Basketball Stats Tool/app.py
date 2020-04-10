@@ -13,22 +13,42 @@ def main():
         print('2) Quit')
         print('')
 
-    def main_menu():
-        selection = input('Enter an option > ')
-        print('')
-        if selection == '1':
-            pass
+    def check(value, options):
+        """ This method expects a value passed from user input
+        and then compares it against the list of options passed
+        as the second argument.
+        If value is found in options then method will return True
+        otherwise it will display an error message and return False
+        """
+        if value in options:
+            return value
         else:
-            exit()
+            print('Please select a valid option')
+            return False
+
+    def main_menu():
+        selection = check(input('Enter an option > '), ['1', '2'])
+        if selection:
+            print('')
+            if selection == '1':
+                pass
+            elif selection == '2':
+                print('Exiting BASKETBALL TEAM STATS TOOL.')
+                exit()
+        else:
+            main_menu()
 
     def list_teams():
         print('1) Panthers')
         print('2) Bandits')
         print('3) Warriors')
         print('')
-        selection = input('Enter an option > ')
-        print('')
-        list_team(selection)
+        selection = check(input('Enter an option > '), ['1', '2', '3'])
+        if selection:
+            print('')
+            list_team(selection)
+        else:
+            list_teams()
 
     def list_team(selection):
         team_name = team_names[int(selection)-1]
@@ -52,6 +72,15 @@ def main():
     team_roster = [{'Panthers': []}, {'Bandits': []}, {'Warriors': []}]
 
     for index, player in enumerate(players):
+        # Clean 'height' value
+        if ' ' in player['height']:
+            player['height'] = int(player['height'].split(' ')[0])
+        # Clean 'experience' value
+        if player['experience'] == 'YES':
+            player['experience'] = True
+        else:
+            player['experience'] = False
+
         # Get index name of the team
         team_name = list(team_roster[index % len(team_names)])[0]
         # Add players evenly across the teams
