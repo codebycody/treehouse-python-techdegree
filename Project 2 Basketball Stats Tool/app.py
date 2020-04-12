@@ -1,4 +1,5 @@
 import constants
+import copy
 
 
 def main():
@@ -67,8 +68,8 @@ def main():
         input('Press ENTER to continue...')
 
     # Build teams
-    team_names = constants.TEAMS
-    players = constants.PLAYERS
+    team_names = copy.deepcopy(constants.TEAMS)
+    players = copy.deepcopy(constants.PLAYERS)
     team_roster = [{'Panthers': []}, {'Bandits': []}, {'Warriors': []}]
 
     for index, player in enumerate(players):
