@@ -1,13 +1,9 @@
-# pick a random phrase
+from phrasehunter.game import Game
 
-# player guesses leter
+if __name__ == '__main__':
+    try:
+        phrasehunter = Game()
+        phrasehunter.start()
 
-# 	check if valid input
-# 		if not retry
-# 	Check if input was guessed before
-#		if guessed already retry
-# 	Check if in phrase
-# 		if in phrase reveal letter
-# 			if all letters revealed exit with winning message
-# 		else incroment wrong guess count by 1
-#			if wrong guess = 5 exit with losing message
+    except Exception as e:
+        raise e
